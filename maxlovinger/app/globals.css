@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@font-face {
+  font-family: 'BTC Diamond Wood';
+  src: url('/fonts/BTCDiamondWood.woff2') format('woff2'),
+       url('/fonts/BTCDiamondWood.woff') format('woff'),
+       url('/fonts/BTCDiamondWood.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-base: #242423;
+  --color-surface: #333533;
+  --color-mist: #CFDBD5;
+  --color-linen: #E8EDDF;
+  --color-gold: #F5CB5C;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+:root {
+  /* Portfolio color tokens */
+  --color-bg-base:       #242423;
+  --color-bg-surface:    #333533;
+  --color-bg-hover:      #3d3f3b;
+  --color-text-primary:  #E8EDDF;
+  --color-text-muted:    #CFDBD5;
+  --color-text-dim:      #7a8075;
+  --color-accent:        #F5CB5C;
+  --color-accent-dim:    rgba(245, 203, 92, 0.15);
+  --color-border-subtle: rgba(207, 219, 213, 0.08);
+  --color-border-accent: rgba(245, 203, 92, 0.25);
+
+  --font-display: 'BTC Diamond Wood', serif;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: var(--font-geist-sans, system-ui), sans-serif;
+  --font-mono-custom: var(--font-geist-mono, monospace);
+  --font-accent: 'Dancing Script', cursive;
+
+  /* shadcn overrides for dark mode by default */
+  --background: #242423;
+  --foreground: #E8EDDF;
+  --card: #333533;
+  --card-foreground: #E8EDDF;
+  --popover: #333533;
+  --popover-foreground: #E8EDDF;
+  --primary: #F5CB5C;
+  --primary-foreground: #242423;
+  --secondary: #333533;
+  --secondary-foreground: #CFDBD5;
+  --muted: #333533;
+  --muted-foreground: #7a8075;
+  --accent: #3d3f3b;
+  --accent-foreground: #E8EDDF;
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: rgba(207, 219, 213, 0.1);
+  --input: rgba(207, 219, 213, 0.1);
+  --ring: #F5CB5C;
+  --radius: 0.5rem;
+  --sidebar: #333533;
+  --sidebar-foreground: #E8EDDF;
+  --sidebar-primary: #F5CB5C;
+  --sidebar-primary-foreground: #242423;
+  --sidebar-accent: #3d3f3b;
+  --sidebar-accent-foreground: #E8EDDF;
+  --sidebar-border: rgba(207, 219, 213, 0.08);
+  --sidebar-ring: #F5CB5C;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+  }
+  body {
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+}
+
+/* Selection */
+::selection {
+  background: #F5CB5C;
+  color: #242423;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #242423; }
+::-webkit-scrollbar-thumb { background: #333533; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #F5CB5C; }
+
+/* ===== TYPOGRAPHY SCALE ===== */
+.text-display {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 8vw, 96px);
+  letter-spacing: 0.02em;
+  line-height: 1.0;
+  color: var(--color-text-primary);
+}
+
+.text-hero-sub {
+  font-family: var(--font-accent);
+  font-size: clamp(18px, 2vw, 24px);
+  color: var(--color-accent);
+}
+
+.text-section {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 4vw, 52px);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+
+.text-card-title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.text-body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  font-weight: 300;
+  color: var(--color-text-muted);
+}
+
+.text-mono-custom {
+  font-family: var(--font-mono-custom);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.text-label {
+  font-family: var(--font-accent);
+  font-size: 14px;
+  color: var(--color-accent);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(245,203,92,0.3), 0 0 20px rgba(245,203,92,0.1); }
+  50% { box-shadow: 0 0 16px rgba(245,203,92,0.5), 0 0 40px rgba(245,203,92,0.2); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+.gold-shimmer {
+  background: linear-gradient(90deg, #F5CB5C 25%, #fff8e1 50%, #F5CB5C 75%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+.glow-border {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.float-anim {
+  animation: float 6s ease-in-out infinite;
+}
+
+.accent-line {
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--color-accent);
+  margin-bottom: 16px;
+}
+
+.section-number {
+  font-family: var(--font-mono-custom);
+  font-size: 11px;
+  color: var(--color-accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #E8EDDF 0%, #CFDBD5 50%, #F5CB5C 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Gold underline on hover */
+.gold-underline {
+  position: relative;
+}
+.gold-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-accent);
+  transition: width 0.3s ease;
+}
+.gold-underline:hover::after {
+  width: 100%;
+}
+
+/* Card glow on hover */
+.card-glow:hover {
+  box-shadow: 0 0 30px rgba(245,203,92,0.08), 0 20px 60px rgba(0,0,0,0.4);
+}
+
+/* Noise overlay for texture */
+.noise-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.3;
+  border-radius: inherit;
+}
